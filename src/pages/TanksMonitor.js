@@ -47,13 +47,7 @@ function BarChart() {
 	const [open, setOpen] = useState(false);
 	const [tanksSelected, setTanksSelected] = useState([]);
 	const [tanks, setTanks, doFetch] = useFetch([]);
-	const [tanksData, setTanksData] = useState({
-		id: [],
-		company: "",
-		WtrLvl: [],
-		OxPercentage: [],
-		Ph: [],
-	});
+	const [tanksData, setTanksData] = useState([]);
 	const [localUser, setLocalUser] = useState({
 		name: "",
 		lastName: "",
@@ -109,13 +103,7 @@ function BarChart() {
 		socket.on('tanks_data', (data) => {
 			console.log("----FROM SOCKET TANKS DATA------")
 			console.log(data)
-			setTanksData({
-				id: data.id,
-				company: data.company,
-				WtrLvl: data.WtrLvl,
-				OxPercentage: data.OxygenPercentage,
-				Ph: data.Ph,
-			});
+			setTanksData(data);
 		});
 		socket.on("connect_error", (err) =>
 			console.log("connect_error: " + err.message)

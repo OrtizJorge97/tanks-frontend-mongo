@@ -1,6 +1,6 @@
 var timeOut = 3000;
-const apiRoute = "http://192.168.100.22:5000";
-const socketApiRoute = "http://192.168.100.22:5000/private";
+const apiRoute = "https://api.ratizales.mx";
+const socketApiRoute = "https://api.ratizales.mx/private";
 const apiModes = {
 	LOGIN: "login",
 	RESEND_CONFIRMATION_EMAIL: "resend_confirmation_email",

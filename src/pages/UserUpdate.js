@@ -128,7 +128,7 @@ export default function UserUpdate() {
 				justifyContent: "center",
 				textAlign: "center"
 			}}>
-			<h1>User page {location.state.email}</h1>
+			<h1>Input new data</h1>
 			<div>
 				<TextField
 					style={{ width: "50%", marginBottom: "15px" }}

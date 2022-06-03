@@ -69,7 +69,7 @@ export default function AddTank() {
 					PhMin: tank.PhMin,
 					PhMax: tank.PhMax,
 					accessToken: localStorage.getItem("accessToken"),
-					company: user.company});
+					company: localStorage.getItem("company")});
 				if(jsonData.msg === 'Token has expired') {
 					navigate('/log-in');
 				}
@@ -109,6 +109,7 @@ export default function AddTank() {
 	useEffect(() => {
 		async function authenticateUser() {
 			try {
+				console.log("company name is: " + localStorage.getItem("company"))
 				const jsonData = await doFetch("GET", apiModes.GETUSER, true, {
 					accessToken: localStorage.getItem("accessToken"),
 				});

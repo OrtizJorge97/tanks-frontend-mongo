@@ -64,12 +64,12 @@ export default function DetailsTank() {
 		setOpen(false);
 	};
 	const updateDashboard = async (data) => {
-		const tankIndex = data.id.indexOf(location.state.tankId);
-		if (tankIndex > -1) {
+		let tankObjects = data.filter(tankData => tankData.id == location.state.tankId);
+		if(tankObjects.length) {
 			setTank({
-				WtrLvl: data.WtrLvl[tankIndex],
-				OxygenPercentage: data.OxygenPercentage[tankIndex],
-				Ph: data.Ph[tankIndex],
+				WtrLvl: tankObjects[0].wtrLvlValue,
+				OxygenPercentage: tankObjects[0].oxygenPercentageValue,
+				Ph: tankObjects[0].phValue,
 			});
 		}
 	};

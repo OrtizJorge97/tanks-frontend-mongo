@@ -40,24 +40,33 @@ export default function ChartComponent(props) {
 		let oxygenPercentage = [];
 		let ph = [];
 		let dataToDisplay = null;
-		console.log("PRINTING TANKS DATA")
-		console.log(tanksData)
-		tanksSelected.forEach((item, index) => {
-			let tankSelectedIndex = tanksData.id.indexOf(item);
-			if (tankSelectedIndex !== -1) {
-				waterLevel.push(tanksData.WtrLvl[tankSelectedIndex]);
-				oxygenPercentage.push(tanksData.OxPercentage[tankSelectedIndex]);
-				ph.push(tanksData.Ph[tankSelectedIndex]);
-			}
-		});
-		console.log(waterLevel);
+		console.log("PRINTING SELECTED TANKS DATA IN CHART COMPONENT");
+		console.log(tanksSelected);
+		console.log("PRINTING TANKS DATA");
+		console.log(tanksData);
+		if(tanksSelected.length && tanksData.length) {
+			tanksSelected.forEach((item, index) => { //["E1000", "E1001"]
+				console.log("TANK SELECTED IS " + item)
+				let tankDataObject = tanksData.filter(tankData => tankData.id == item);//get the objects here
+				console.log("PRINTING TANK DATA OBJECT")
+				console.log(tankDataObject)
+				tankDataObject = tankDataObject[0];
+				if(tankDataObject !== undefined && tankDataObject !== null) {
+					waterLevel.push(tankDataObject.wtrLvlValue);
+					oxygenPercentage.push(tankDataObject.oxygenPercentageValue);
+					ph.push(tankDataObject.phValue);
+				}
+				
+			});
+			console.log(waterLevel);
 
-		if (category === "Water Level") {
-			dataToDisplay = waterLevel;
-		} else if (category === "%Oxygen") {
-			dataToDisplay = oxygenPercentage;
-		} else if (category === "Ph") {
-			dataToDisplay = ph;
+			if (category === "Water Level") {
+				dataToDisplay = waterLevel;
+			} else if (category === "%Oxygen") {
+				dataToDisplay = oxygenPercentage;
+			} else if (category === "Ph") {
+				dataToDisplay = ph;
+			}
 		}
 		setGraph({
 			data: {
