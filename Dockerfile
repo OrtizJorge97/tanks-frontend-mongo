@@ -6,6 +6,6 @@ RUN yarn install
 COPY public ./public
 COPY src ./src
 RUN yarn run build
-
+#comment
 FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
